@@ -1,1 +1,39 @@
-.
+// Jenkinsfile
+pipeline {
+    // Defines where the pipeline will run. 'agent any' uses any available executor.
+    agent any 
+
+    // Define the stages of the pipeline
+    stages {
+        // Stage 1: Matches 'One' from your screenshot
+        stage('One') {
+            steps {
+                echo 'Hi, welcome to pipeline demo...'
+            }
+        }
+        
+        // Stage 2: Matches 'Two' from your screenshot (usually a testing stage)
+        stage('Two') {
+            steps {
+                echo 'Sample testing of Stage 2'
+                // Add your actual testing commands here, e.g., 'sh 'mvn test''
+            }
+        }
+        
+        // Stage 3: Matches 'Three' from your screenshot (usually a deployment stage)
+        stage('Three') {
+            steps {
+                echo 'Thanks for using Jenkins Pipeline'
+                // Add your actual deployment commands here
+            }
+        }
+    }
+    
+    // Actions to take after the pipeline completes
+    post {
+        always {
+            // Cleans up workspace after every run
+            cleanWs()
+        }
+    }
+}
